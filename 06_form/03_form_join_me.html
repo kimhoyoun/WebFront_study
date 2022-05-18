@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가입양식연습</title>
+  <style>
+    *{
+      margin: 0px;
+      padding: 0px;
+    }
+    table{
+      border-spacing: 0px;
+      border-collapse: collapse;
+    }
+
+    fieldset{
+      border: none;  
+    }
+
+    form#join{
+      width: 1200px;
+      height: auto;
+      margin: 100px auto;
+    }
+
+    table#join_table{
+      width: 100%;
+      height: auto;
+      border-top: solid 3px black;
+      border-bottom: solid 3px black;
+    }
+    
+    table#join_table th{
+      width: 200px;
+      height: 80px;
+      background: #eeeeee;
+      border-bottom: dotted 1px black;
+      border-right: solid 1px black;
+      text-align: left;
+      /* text-indent : 들여쓰기 */
+      text-indent: 40px;
+    }
+
+    table#join_table td{
+      border-bottom: dotted 1px black;
+      text-indent: 40px;
+    }
+
+    /* 중복 클래스
+      클래스는 동시에 여러개의 클래스를 넣을 수 있다.
+      class value값에서 한칸 띄고 다른 클래스를 넣어줄 수 있다.
+      class = "class1 class2" 
+      
+    */
+    input.txt_box{
+      height: 25px;
+      background: #eeeeee;
+      border: solid 1px #cccccc;
+    }
+
+    .w200{
+      width: 200px;
+    }
+
+    .w300{
+      width: 300px;
+    }
+  </style>
+
+</head>
+<body>
+  <form id="join" name="join">
+    <fieldset>
+      <legend>가입양식연습</legend>
+      <table id="join_table">
+        <tr>
+          <!-- label tag 'for'속성을 사용해서 제목을 클릭하면 input요소에 데이터를 입력할 수 있도록 해준다. -->
+          <th><label for="user_id">아이디</label></th>
+          <td>
+            <input type="text" id="user_id" class = "txt_box w300" name="user_id" maxlength="12" placeholder="아이디입력">
+          </td>
+        </tr>
+
+        <tr>
+          <th><label for="user_pw">비밀번호</label></th>
+          <td>
+            <input type="password" id="user_pw" class="txt_box w300" name="user_pw" placeholder="비밀번호입력">
+          </td>
+        </tr>
+
+        <tr>
+          <th><label for="tel_co">연락처</label></th>
+          <td>
+            <select id="tel_co">
+              <option value="" >이동통신</option>
+              <option value="KT">KT</option>
+              <option value="SKT">SKT</option>
+              <option value="LG">LGU+</option>
+            </select>
+            <input type="text" class="txt_box w200" name="tel1">-
+            <input type="text" class="txt_box w200" name="tel2">-
+            <input type="text" class="txt_box w200" name="tel3">
+          </td>
+        </tr>
+
+        <tr>
+          <th>구분</th>
+          <td>
+            <!-- radio같이 많은 것은 label에 해당하는 텍스트와 input요소를 label로 묶어주면 됨. -->
+            <label>개인회원<input type="radio" name="member" checked value="person"></label>
+            <label>기업회원<input type="radio" name="member" value="company"></label>
+            <label>외국인<input type="radio" name="member" value="foreigner"></label>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+
+
+  </form>
+
+
+  
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>여러가지폼요소연습</title>
+  <style>
+    fieldset{
+      border:none;
+    }
+    textarea{
+      resize: none;
+    }
+  </style>
+</head>
+<body>
+  <form id = "test" name = "test">
+    <!-- 
+      fieldset : form 요소를 구분해 줄때 사용
+      예 : 기업 or 개인 로그인
+          필수입력사항 or 선택입력사항
+    -->
+    <fieldset>
+      <legend>여러가지폼요소연습</legend>
+      <!-- 
+        form tag 요소
+        input tag
+          기본적으로 가로로가는 요소 (인라인요소)
+            => 각각의 블럭요소 안에서 사용 ex)<p> or <td> tag
+          속성
+          maxlength : 최대 입력 글자
+          placeholder : hint를 보여줌
+          autofocus : 자동으로 focus가 맞춰짐.
+          autocomplete : 자동완성
+          id : style을 입히기 위한 id
+          name : 데이터 전송 시 확인할 수 있는 id
+          value : 미리 입력할 데이터
+
+          type 속성
+            text
+            password
+              글자가 * 로 출력
+            radio 
+              동일한 name값을 설정해야 그 중 한개만 선택할 수 있다.
+              checked : 미리 체크함.
+            checkbox
+              여러개 선택 가능.
+              동일한 name값을 통해 같은 종목의 내용임을 알려줌.
+            submit
+              입력된 데이터를 보내는 역할
+              value : 제출 버튼의 이름
+            reset
+              입력된 데이터를 취소 (같은 form요소 안에 있는 것들 reset)
+            image
+              내가 만든 임의의 이미지를 버튼으로 사용할 수 있다.
+              submit이랑 다름. click이벤트를 넣어서 다른 용도로 사용가능 ex) 중복확인
+            file
+              파일찾기
+              속성은 따로 없음.
+
+        textarea
+          장문 글쓰기
+          속성
+            cols : 가로 (글자수)
+            rows : 세로 (줄)
+            브라우저마다 사이즈를 조절할 수 있거나 없다. 
+              => reset.css 에 textarea의 
+            resize : none 속성이 있다. (사이즈 조절 불가)
+            
+        select
+          목록버튼으로 나타남.
+          선택할 수 있는 항목은 option tag 사용
+          list형식 (펼쳐놓는 것)으로 변경 가능 
+            => size 속성을 줌. size 이상의 option이 있을경우 스크롤바가 생김.
+               
+      -->
+        <p>
+          <input type="text" id="user_id" name="user_id" value = "user_id" size="20" maxlength="10" 
+          placeholder="아이디입력" autofocus = "autofocus" autocomplete="off">
+        </p>
+        
+        <p>
+          <input type="password" id="user_pw" name="user_pw" value = "" size="20" maxlength="12" 
+          placeholder="패스워드입력" autocomplete="off">
+        </p>
+        
+        <p>
+          남자 <input type="radio" name="gender" checked> 여자 <input type="radio" name="gender">
+        </p>
+
+        <p>
+          캠핑 <input type="checkbox" name="hobby"> 낚시 <input type="checkbox" name="hobby">
+        </p>
+
+        <p>
+          <input type="submit" value="보내기"> <input type="reset" value="취소">
+          <button>일반버튼</button> <input type="image" src="./images/ok_button.gif" alt="확인">
+        </p>
+
+        <p>
+          <input type="file">
+        </p>
+        <p>
+          <!-- textarea는 미리 내용을 입력하지 않을거면 </textarea>를 붙여준다. -->
+          <textarea name="" id="" cols="50" rows="10"></textarea>
+        </p>
+        <p>
+          <select size="3">
+            <option value="">네이버</option>
+            <option value="">구글</option>
+            <option value="">네이트</option>
+            <option value="">다음</option>
+          </select>
+        </p>
+    </fieldset>
+
+  </form>
+</body>
+</html>
