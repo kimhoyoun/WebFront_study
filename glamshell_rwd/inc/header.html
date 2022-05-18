@@ -1,0 +1,90 @@
+<!-- 의미가 없는 영역은 div, 의미가 있는 부분은 header, footer 등 마크업 언어가 들어감 -->
+  <!-- 빠른메뉴부터 코딩하면 안됨. 헤더의 로고부터 코딩! -->
+  <!-- 모바일이라면 header_wrap부분이 필요없음. -->
+  <div id="header_wrap">
+    <header>
+        <!-- 로고, 메뉴, 서브메뉴 등등 넣어주면 됨 -->
+        <!-- <h1>글램쉘반응형웹사이트</h1> -->
+        <!-- 시각 장애인은 로고를 확인할 수 없으므로 이미지를 설명할 수 있는
+        설명을 넣어줘야함 : alt 속성 추가 -->
+        <!-- 제목과 이미지의 설명이 중복되면 혼동할 수 있으니
+        이미지를 제목으로 넣어줌. -->
+        <!-- alt는 이미의 설명만 적어줄 때 사용함. 
+        내용은 사용자가 알 수 있도록 적지만 '이미지'라는 단어는 넣지 않음.
+        읽을 때 : 글램쉘반응형웹사이트 이미지 -->
+        <!-- a tag와 같은 링크의 설명 속성은 title 
+        읽을 때 : '클램쉘메인페이지바로가기 링크' -->
+        <h1 id="logo"><a href="/glamshell_rwd/index.php" title="클램쉘메인페이지바로가기"><img src="/glamshell_rwd/images/logo.gif" alt="글램쉘반응형웹사이트"></a></h1>
+        <!-- 중요한 컨텐츠가 있을때마다 h tag가 나타난다 -->
+        <nav id="topmenu">
+          <!-- nav요소를 넣을때 메뉴를 nav안에 넣어주는게 좋음. 
+          제목을 넣지않으면 html outline에 Untitle nav 라는 문구로 나옴-->
+          <h2 class="hidden">상단빠른메뉴</h2>
+          <ul id="topmenu_list">
+            <li><a href="#">LOGIN</a></li>
+            <li><a href="#">JOIN</a></li>
+            <li><a href="#">SEARCH</a></li>
+            <li><a href="#">Q&A</a></li>
+          </ul>
+        </nav>
+        
+        <!-- 메인메뉴 구조 잡기 : 서브 메뉴 존재 -->
+        <nav id="mainmenu">
+            <h2 class="hidden">메인메뉴</h2>
+            <ul id="mainmenu_list">
+              <!-- li가 끝나기전에 서브메뉴를 넣어줘야 큰메뉴 -> 서브메뉴 순서대로 읽을 수 있음 -->
+              <li>
+                <a href="/glamshell_rwd/brand/brand.php">BRAND</a>
+                <ul class="submenu_list">
+                  <li><a href="#">BRAND</a></li>
+                  <li><a href="#">DESIGN</a></li>
+                  <li><a href="#">BI</a></li>
+                </ul>
+              </li>
+
+              <li>
+                <a href="#">COLLECTION</a>
+                <ul class="submenu_list">
+                  <li><a href="#">CRYSTAL</a></li>
+                  <li><a href="#">NANO</a></li>
+                  <li><a href="#">MAGIC</a></li>
+                  <li><a href="#">PUZZLE</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">STORE</a>
+                <ul class="submenu_list">
+                  <li><a href="#">ON-LINE</a></li>
+                  <li><a href="#">OFF-LINE</a></li>
+                  <li><a href="#">B2B</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">REVIEW</a>
+                <ul class="submenu_list">
+                  <li><a href="#">EVENT</a></li>
+                  <li><a href="#">NOTICE</a></li>
+                  <li><a href="#">NEWS</a></li>
+                  <li><a href="#">INTERVIEW</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">CUSTOMER</a>
+                <ul class="submenu_list">
+                  <li><a href="#">INSTALL</a></li>
+                  <li><a href="#">POWER REVIEW</a></li>
+                  <li><a href="#">Q&A</a></li>
+                  <li><a href="#">FAQ</a></li>
+                </ul>
+              </li>
+            </ul>
+        </nav>
+        <nav id = "mobile_menu">
+          <h2 class="hidden">모바일메뉴</h2>
+          <img src ="/glamshell_rwd/images/menu_mobile.png" alt = "모바일메뉴"/>
+        </nav>
+        <!-- <a href="#">Weekly Best</a> -->
+        <button id="best_btn">Weekly Best</button>
+
+    </header>
+  </div>

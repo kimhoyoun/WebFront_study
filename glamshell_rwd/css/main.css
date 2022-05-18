@@ -1,0 +1,139 @@
+div#visual_wrap{
+  width: 100%;
+  height: 469px;
+  overflow: hidden;
+}
+
+
+section#visual{
+  width: 980px;
+  height: 100%;
+  margin: 0px auto;
+  position: relative;
+  left: 0px;
+  top: 0px;
+}
+
+ul#visual_list{
+  width: 300%;
+  height: 100%;
+  position:absolute;
+  left: 50%;
+  top: 0px;
+  margin-left: -150%;
+}
+
+ul#visual_list>li{
+  width: 33.33%;
+  height: 100%;
+  float: left;
+}
+
+ul#visual_list>li img{
+  width:100%;
+}
+
+
+a#next_btn{
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  margin-top: -37px;
+}
+
+a#prev_btn{
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  margin-top: -37px;
+}
+
+
+section#useinstall{
+  width: 100%;
+  height: auto;
+}
+
+ul#useinstall_list{
+  width: 100%;
+  height: auto;
+}
+
+
+ul#useinstall_list>li{
+  width: 22%;
+  height: auto;
+  float: left;
+  margin-right: 4%;
+  
+}
+
+ul#useinstall_list>li:last-child{
+  margin-right: 0px;
+}
+
+p.useinstall_title{
+  text-align: center;
+  font: bold 14px 'Nato Sans KR';
+  color: rgb(63,63,63);
+  margin-bottom: 10px;
+}
+
+
+p.useinstall_image{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+p.useinstall_image img{
+  width: 100%;
+}
+
+p.useinstall_text{
+  text-align: center;
+  font: normal 11px 'Nato Sans KR';
+}
+
+@media screen and (max-width:980px){
+  section#visual{
+    width: 100%;
+  }
+  section#contents{
+    width: 95%;
+  }
+
+}
+
+@media screen and (max-width:768px){
+  div#visual_wrap{
+    height: 300px;
+  }
+  section#contents{
+    padding-top:30px;
+  }
+  ul#useinstall_list>li{
+    width: 46%;
+    margin-right: 8%;
+  }
+
+  ul#useinstall_list>li:nth-child(2n){
+    margin-right: 0px;
+  }
+}
+
+@media screen and (max-width:480px){
+  div#visual_wrap{
+    height: 200px;
+  }
+  
+  a#next_btn img,
+    a#prev_btn img {
+      width: 30px;
+    }
+  
+    a#next_btn,
+    a#prev_btn {
+      margin-top: -20px;
+    }
+
+}
