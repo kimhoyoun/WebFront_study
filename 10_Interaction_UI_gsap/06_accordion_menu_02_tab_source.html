@@ -73,9 +73,75 @@
   <script> 
   
     
+    // document.addEventListener('DOMContentLoaded',()=>{
+
+    //   const mainMenu = document.querySelectorAll('#mainmenu_list>li>a')
+
+    //   let closeHeight=45
+    //   let openHeight=45
+
+    //   let selectedMenu=null
 
 
+    //   for(const item of mainMenu){
+    //     item.addEventListener('click', mainMenuActivate)
+    //     item.addEventListener('focus', mainMenuActivate)
 
+    //   }
+
+    //   function mainMenuActivate(){
+    //     if(selectedMenu!=null && selectedMenu != this){
+    //       selectedMenu.classList.remove('selected')
+    //       selectedMenu.children[0].classList.remove('selected')
+    //       gsap.to(selectedMenu.parentElement, {height:closeHeight, duration:0.3, ease:'power1.out'})
+          
+    //     }
+
+    //     if(selectedMenu != this){
+    //       selectedMenu = this;
+    //       openHeight = closeHeight + (closeHeight*selectedMenu.nextElementSibling.children.length)
+    //       selectedMenu.classList.add('selected')
+    //       selectedMenu.children[0].classList.add('selected')
+    //       gsap.to(selectedMenu.parentElement, {height:openHeight, duration:0.3, ease:'power1.out'})
+    //     }
+    //   }
+    // })
+
+      document.addEventListener('DOMContentLoaded',()=>{
+        const mainMenu = document.querySelectorAll('#mainmenu_list>li>a')
+
+        let closeHeight = 45
+        let openHeight = 45
+
+        let selectedMenu = null
+
+        for(const item of mainMenu){
+            item.addEventListener('click', mainMenuActivate)
+            item.addEventListener('focus', mainMenuActivate)
+        }
+
+        function mainMenuActivate(){
+          if(selectedMenu != null && selectedMenu !=this){
+            gsap.to(selectedMenu.parentElement,{height:closeHeight, duration:0.3, ease:'power1,out'})
+            selectedMenu.classList.remove('selected')
+            selectedMenu.children[0].classList.remove('selected')
+          }
+
+          if(selectedMenu!=this){
+            selectedMenu = this;
+            openHeight = closeHeight + (closeHeight*selectedMenu.nextElementSibling.children.length)
+            // alert(openHeight)
+            gsap.to(selectedMenu.parentElement,{height:openHeight, duration:0.3, ease:'power1.out'})
+            selectedMenu.classList.add('selected')
+            selectedMenu.children[0].classList.add('selected')
+          }
+        }
+
+
+        
+
+
+      })
 
 
 

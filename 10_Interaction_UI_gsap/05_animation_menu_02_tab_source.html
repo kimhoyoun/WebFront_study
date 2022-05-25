@@ -50,7 +50,26 @@
 
   <script>
   
-	
+	document.addEventListener('DOMContentLoaded',()=>{
+
+		const mainMenu = document.querySelectorAll('#menu_list>li>a')
+
+		for(const item of mainMenu){
+			item.addEventListener('mouseenter',mainMenuActivate)
+			item.addEventListener('focus',mainMenuActivate)
+			item.addEventListener('mouseleave',mainMenuInActivate)
+			item.addEventListener('focusout',mainMenuInActivate)
+		
+		}
+
+		function mainMenuActivate(){
+				gsap.to(this,{top:-30, duration:0.3, ease:'power1.out'})
+		}
+
+		function mainMenuInActivate(){
+				gsap.to(this,{top:0, duration:0.3, ease:'power1.out'})
+		}
+	})
 	
 
 

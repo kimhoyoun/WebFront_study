@@ -52,12 +52,129 @@
 
   <script>
   
+   
+      document.addEventListener('DOMContentLoaded',()=>{
+
+        // galleryImg()
+
+
+        const imgMenu = document.querySelectorAll("#img_list>li")
+        const main = document.querySelector('#main')
+
+        let selectedMenu = null;
+        imgMenuActivate(0)
+
+        initEvent()
+        
+        function initEvent(){
+          for(const item of imgMenu){
+            item.addEventListener('click',clickImgMenu)
+          }
+        }
+
+        function clickImgMenu(){
+          let clickMenu = getImgIndex(this)
+          
+          imgMenuActivate(clickMenu)
+
+          showMainImg(clickMenu)
+        }
+
+        // 010-2459-9007 전화번호 박기현
+
+        function getImgIndex(selectedMenu){
+          let selectedIndex = 0;
+          while((selectedMenu=selectedMenu.previousElementSibling) != null){
+            selectedIndex++;
+          }
+
+          return selectedIndex
+        }
+
+
+        function imgMenuActivate(index){
+          if(selectedMenu != null && selectedMenu != imgMenu[index]){
+            selectedMenu.classList.remove('selected')
+          }
+
+          if(selectedMenu != imgMenu[index]){
+            selectedMenu = imgMenu[index]
+
+            selectedMenu.classList.add('selected')
+          }
+        }
+
+        function showMainImg(index){
+            let newImg = document.createElement('img')
+
+            newImg.src="./images/photo"+(index+1)+".jpg"
+            main.prepend(newImg)
+
+            gsap.to(main.children[1],{opacity:0, duration:0.3, ease:'power1.out', onComplete:()=>{
+              main.removeChild(main.children[1])
+            }})
+        }
+
+
+      })
+
+
+      function galleryImg(){
+         
+
+        const imgMenu = document.querySelectorAll('#img_list>li')
+        const main = document.querySelector('#main')
+
+        let selectedMenu = null;
+
+        imgMenuActivate(0)
+
+        function initEvent(){        
+          for(const item of imgMenu){
+          item.addEventListener('click', clickImgMenu)
+          }
+        }
+
+
+        function clickImgMenu(){
+          let clickIndex = getIndex(this)
+          imgMenuActivate(clickIndex)
+
+          showMainImg(clickIndex)
+        }
+
+        function getIndex(checkMenu){
+            let selectedIndex = 0;
+            while((checkMenu=checkMenu.previousElementSibling) != null){
+              selectedIndex++
+            }
+
+
+            return selectedIndex
+          }
+
+        function imgMenuActivate(index){
+            if(selectedMenu!=null && selectedMenu != imgMenu[index]){
+              selectedMenu.classList.remove('selected')
+            }
+
+            if(selectedMenu != imgMenu[index]){
+              selectedMenu = imgMenu[index]
+              selectedMenu.classList.add('selected')
+            }
+        }
+
+        function showMainImg(index){
+          let newImg = document.createElement('img')
+          newImg.src="./images/photo"+(index+1)+".jpg"
+
+          main.prepend(newImg)
+          gsap.to(main.children[1], {opacity:0, duration:0.3, ease:'power1.out', onComplete:()=>{
+            main.removeChild(main.children[1])
+          }})
+        }
     
-
-
-
-
-
+      }
 
 
 

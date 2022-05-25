@@ -21,12 +21,13 @@
     
     div#grayLayer{          
       height:100%; width:100%; position:absolute; left:0; top:0;      
-      background:black; opacity:0;
+      background:black; opacity:0; display: none;
     }   
 
     div#overLayer{      
       width:650px; height:443px; position:absolute; top:50%; left:50%;  margin-top:-221px; margin-left:-325px; 
       display:none; 
+      background: red;
     }
     
   
@@ -39,7 +40,66 @@
   <script>
 
     
+      document.addEventListener('DOMContentLoaded',()=>{
 
+        const grayLayer = document.createElement('div')
+        const overLayer = document.createElement('div')
+
+        const body = document.querySelector('body')
+
+        grayLayer.id = 'grayLayer'
+        overLayer.id = 'overLayer'
+
+        const imgMenu = document.querySelectorAll('#img_list>li')
+
+        for(const item of imgMenu){
+          item.addEventListener('click',clickImgMenu)
+        }
+
+        grayLayer.addEventListener('click',hideModalWindow)
+
+        function clickImgMenu(){
+          let clickIndex = getIndex(this)
+          // alert(clickIndex)
+          showModalWindow(clickIndex)
+        }
+
+        function getIndex(checkMenu){
+          let selectedIndex = 0;
+          while((checkMenu=checkMenu.previousElementSibling) != null){
+            selectedIndex++
+          }
+
+
+          return selectedIndex
+        }
+        
+        function showModalWindow(index){
+          // 기존에 element가 있으면 추가하지않고 style 속성값만 변경한다.
+          body.append(grayLayer)
+          // duration 단위 : 초 
+          // onComplete:()=>{} 효과가 끝나고 할 일 정의할 수 있다.
+          // gsap.to(grayLayer,{opacity:0.7, duration:0.5, ease:'power1.out', onComplete:()=>{
+            
+          // }})
+          gsap.set(grayLayer, {display:'block'})
+          gsap.to(grayLayer,{opacity:0.7, duration:0.3, ease:'power1.out'})
+
+          body.append(overLayer)
+          gsap.set(overLayer, {display:'block'})
+
+          overLayer.innerHTML="<img src='./images/photo"+(index+1)+".jpg'>"
+
+         
+        }
+
+        function hideModalWindow(){
+          gsap.set(overLayer,{display:'none'})
+          gsap.to(grayLayer,{opacity:0, duration:0.3, ease:'power1.out', onComplete:()=>{
+            gsap.set(grayLayer, {display:'none'})
+          }})
+        }
+      })
 
 
 
@@ -65,7 +125,15 @@
     <li><a href="#"><img src="images/photo7_thum.jpg" alt="" /></a></li>
     <li><a href="#"><img src="images/photo8_thum.jpg" alt="" /></a></li>
   </ul>
-  
+  <!-- <div id ="grayLayer">
+
+
+  </div>
+
+  <div id ="overLayer">
+
+
+  </div> -->
   
 </body>
 </html>

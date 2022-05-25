@@ -49,6 +49,7 @@
 
     div.submenu{
       width:300px; position:absolute; left:0px; top:65px; 
+      opacity: 0; display:none;
     }
 
     ul.submenu_list>li{
@@ -65,9 +66,106 @@
 
   <script>
 
-    
+    // document.addEventListener('DOMContentLoaded',()=>{
+    //   const mainMenu = document.querySelectorAll('.mainmenu>a')
+    //   const submenu = document.querySelectorAll('.submenu')
+    //   const headerInner = document.querySelector('#header_inner')
+      
+    //   let selectedMenu = null
 
+    //   for(const item of mainMenu){
+    //     item.addEventListener('mouseenter', mainMenuOver)
+    //     item.addEventListener('focus', mainMenuOver)
+    //   }
 
+    //   headerInner.addEventListener('mouseleave', mainMenuOut)
+
+    //   function mainMenuOver(){
+    //     menuInActivate(this)
+    //     menuActivate(this)
+    //   }
+
+    //   function mainMenuOut(){
+    //     menuInActivate(this)
+    //     selectedMenu = null
+    //   }
+
+    //   function menuInActivate(menu){
+    //     if(selectedMenu!=null && selectedMenu != menu){
+    //       gsap.to(selectedMenu, {top:0, duration:0.3, ease:'power1.out'})
+    //       oldSubMenu = selectedMenu.parentElement.nextElementSibling;
+    //       gsap.to(oldSubMenu, {left:0, opacity:0, duration:0.3, ease:'power1.out', onComplete:()=>{
+    //         gsap.set(oldSubMenu,{display:none})
+    //       }})
+    //     }
+    //   }
+
+    //   function menuActivate(menu){
+    //     if(selectedMenu != menu){
+    //       selectedMenu = menu
+    //       gsap.to(selectedMenu, {top:-25, duration:0.3, ease:'power1.out'})
+
+    //       let newSubMenu = selectedMenu.parentElement.nextElementSibling;
+
+    //       gsap.set(newSubMenu,{display:'block'})
+    //       gsap.to(newSubMenu,{left:-30, opacity:1, duration:0.3, ease:'power1.out'})
+    //     }
+    //   }
+    // })
+
+      document.addEventListener('DOMContentLoaded', ()=>{
+        const mainMenu = document.querySelectorAll('.mainmenu>a')
+        const subMenu = document.querySelectorAll('.submenu')
+        const headerInner = document.querySelector('#header_inner')
+        let selectedMenu = null
+
+        for(const item of mainMenu){
+          item.addEventListener('mouseenter', mainMenuOver)
+        }
+
+        headerInner.addEventListener('mouseleave', mainMenuOut)
+
+        function mainMenuOver(){
+          menuInActivate(this)
+          menuActivate(this)
+          let count = getIndex(this)
+          alert(count)
+        }
+
+        function mainMenuOut(){
+          menuInActivate(this)
+          selectedMenu = null
+        }
+
+        function menuActivate(menu){
+          if(selectedMenu != menu){
+              selectedMenu = menu
+              gsap.to(selectedMenu, {top:-25, duration:0.3, ease:'power1.out'})
+              let subMenu = selectedMenu.parentElement.nextElementSibling;
+              gsap.set(subMenu,{display:'block'})
+              gsap.to(subMenu,{left:-30, opacity:1, duration:0.3, ease:'power1.out'})
+          }
+        }
+
+        function menuInActivate(menu){
+          if(selectedMenu != null && selectedMenu != menu){
+            gsap.to(selectedMenu, {top:0, duration:0.3, ease:'power1.out'})
+            let subMenu = selectedMenu.parentElement.nextElementSibling;
+            gsap.to(subMenu,{left:0, opacity:0, duration:0.3, ease:'power1.out'})
+            gsap.set(subMenu,{display:'none'})
+
+          }
+        }
+
+        function getIndex(menu){
+          let index = 0;
+          while((menu=menu.previousElementSibling) != null){
+            index++;
+          }
+
+          return index;
+        }
+      })
 
 
 
