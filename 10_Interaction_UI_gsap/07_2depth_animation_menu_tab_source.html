@@ -125,11 +125,12 @@
 
         headerInner.addEventListener('mouseleave', mainMenuOut)
 
+        const subMenuLeft= [-30, -60, -10, -20, -80]
+
         function mainMenuOver(){
+          let index = getIndex(this)
           menuInActivate(this)
-          menuActivate(this)
-          let count = getIndex(this)
-          alert(count)
+          menuActivate(this, index)
         }
 
         function mainMenuOut(){
@@ -137,13 +138,14 @@
           selectedMenu = null
         }
 
-        function menuActivate(menu){
+        function menuActivate(menu, index){
           if(selectedMenu != menu){
               selectedMenu = menu
               gsap.to(selectedMenu, {top:-25, duration:0.3, ease:'power1.out'})
               let subMenu = selectedMenu.parentElement.nextElementSibling;
               gsap.set(subMenu,{display:'block'})
-              gsap.to(subMenu,{left:-30, opacity:1, duration:0.3, ease:'power1.out'})
+              // alert(subMenuLeft[index])
+              gsap.to(subMenu,{left:subMenuLeft[index], opacity:1, duration:0.3, ease:'power1.out'})
           }
         }
 
@@ -159,7 +161,9 @@
 
         function getIndex(menu){
           let index = 0;
-          while((menu=menu.previousElementSibling) != null){
+          let listElement = menu.parentElement.parentElement
+          
+          while((listElement=listElement.previousElementSibling) != null){
             index++;
           }
 
@@ -186,7 +190,7 @@
         <div id="header_inner">
             <span id="logo"><a href="#"><img src="images/logo.png" alt="" /></a></span>
             <ul id="mainmenu_list">
-                <li>
+                  <li>
                       <div class="mainmenu">
                         <a href="#"><img src="images/menu0.png" alt="" /> </a>                   
                       </div>
